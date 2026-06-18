@@ -5,14 +5,16 @@
 
 ## 1. Community
 
+What community did you choose and why? Why is this community a good fit for a classification task — what makes the discourse varied enough to be interesting?
+
 **Chosen community:** r/TrueFilm (https://www.reddit.com/r/TrueFilm/)
 
 r/TrueFilm is a subreddit dedicated to serious, in-depth film discussion. It was chosen because its community rules actively enforce the kind of discourse variation that makes classification meaningful and tractable. Specifically:
 
 - Posts require a **360-character minimum** — no throwaway content
-- Rule 4 bans simple recommendations, rankings, and lists from the main feed (those go in weekly "Fun & Fancy Free" threads)
-- Rule 5 requires that even question-style posts argue a position and guide discussion in a specific direction
-- Rule 6 requires that posts linking to outside articles include a written summary of the thesis
+- Rules ban simple recommendations, rankings, and lists from the main feed
+- Rules require that even question-style posts argue a position and guide discussion in a specific direction
+- Rules require that posts linking to outside articles include a written summary of the thesis
 
 These rules mean almost every post in the main feed is substantive and falls cleanly into one of three modes of engagement: examining how a film was made, arguing what a film means, or expressing a personal response to watching one. This variation is exactly what makes the community a good fit for a classification task — the distinctions are real, meaningful to participants, and specific enough to be consistently applied.
 
