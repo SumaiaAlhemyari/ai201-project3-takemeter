@@ -5,8 +5,6 @@
 
 ## 1. Community
 
-What community did you choose and why? Why is this community a good fit for a classification task — what makes the discourse varied enough to be interesting?
-
 **Chosen community:** r/TrueFilm (https://www.reddit.com/r/TrueFilm/)
 
 r/TrueFilm is a subreddit dedicated to serious, in-depth film discussion. It was chosen because its community rules actively enforce the kind of discourse variation that makes classification meaningful and tractable. Specifically:
@@ -24,9 +22,7 @@ These rules mean almost every post in the main feed is substantive and falls cle
 
 ## 2. Label Taxonomy
 
-Three labels were chosen. A fourth label (`recommendation`) was considered and rejected because r/TrueFilm's rules explicitly prohibit recommendation posts in the main feed, so no such posts exist in the dataset.
-
----
+Three labels were chosen:
 
 ### `analysis`
 **Definition:** A post that examines a film's craft, techniques, or formal structure using specific evidence — such as cinematography, editing choices, performance decisions, score, or direction — where the primary focus is *how* the film was made rather than *what* it means.
@@ -101,13 +97,13 @@ The most common ambiguous case in r/TrueFilm is a post that examines specific cr
 
 ### Edge case 2: Reaction post with structured observations
 
-The Past Lives example above illustrates this case. The writer makes real observations about the film's craft (direction, pacing, character development) but the post is structured as a personal response — "for me," "I enjoyed it," evaluative rather than argumentative.
+The Past example above illustrates this case. The writer makes real observations about the film's craft (direction, pacing, character development) but the post is structured as a personal response — "for me," "I enjoyed it," evaluative rather than argumentative.
 
 **Decision rule:** If the emotional or personal experience is the frame through which everything else is presented, label it `reaction`. If the personal response is mentioned briefly but the bulk of the post is a developed argument, label it by the argument type (`analysis` or `interpretation`). The question is: would this post make sense without the "I watched it last night" framing? If no, it's `reaction`.
 
-### Edge case 3: Rule 6 posts summarizing an outside article or video essay
+### Edge case 3: Posts summarizing an outside article or video essay
 
-r/TrueFilm's Rule 6 allows posts that summarize an outside source. These posts present someone else's argument.
+r/TrueFilm's community Rules allow posts that summarize an outside source. These posts present someone else's argument.
 
 **Decision rule:** Label based on the content of the argument being presented, not its origin. If the article being summarized is about craft, label `analysis`. If it argues for a meaning or theme, label `interpretation`. The poster's voice is secondary.
 
