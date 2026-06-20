@@ -182,7 +182,7 @@ Both models (fine-tuned DistilBERT and zero-shot Groq LLaMA 3.3 70B) are evaluat
 Claude (claude.ai) will be used at three specific stages of the project:
 
 **Stage 1 — Label stress-testing (before annotation)**
-Before labeling 200 posts, Claude will be given the three label definitions and edge case rules and asked to generate 8–10 posts that sit at the boundary between two labels. If Claude produces posts that cannot be cleanly labeled using the current definitions, the definitions will be tightened before annotation begins. This is more efficient than discovering the problem after labeling 50 posts.
+Before labeling 200 posts, Claude will be given the three label definitions and edge case rules and asked to generate 6 posts that sit at the boundary between two labels. If Claude produces posts that cannot be cleanly labeled using the current definitions, the definitions will be tightened before annotation begins. This is more efficient than discovering the problem after labeling 50 posts.
 
 **Stage 2 — Annotation assistance (during labeling)**
 For posts that are genuinely ambiguous after applying the decision rules, Claude will be given the label definitions and the specific post and asked which label it would assign and why. The final label decision will always be made by the human annotator — Claude's suggestion is a second opinion, not a final answer. All Claude-assisted labels will be tracked in a separate notes column in the CSV.
