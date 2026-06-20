@@ -126,7 +126,7 @@ r/TrueFilm's community Rules allow posts that summarize an outside source. These
 - Stickied mod posts and weekly "Fun & Fancy Free" discussion threads
 - Posts under 200 characters (too short for reliable labeling)
 
-**Post format:** Each example consists of the post title concatenated with the post body, separated by a space. This matches the format produced by the collection scripts and is consistent with how the Colab notebook will tokenize the data.
+**Post format:** Each example consists of the post title concatenated with the post body, separated by a space. This matches the format produced by the collection scripts and is consistent with how the Colab will tokenize the data.
 
 ---
 
@@ -188,7 +188,7 @@ Before labeling 200 posts, Claude will be given the three label definitions and 
 For posts that are genuinely ambiguous after applying the decision rules, Claude will be given the label definitions and the specific post and asked which label it would assign and why. The final label decision will always be made by the human annotator — Claude's suggestion is a second opinion, not a final answer. All Claude-assisted labels will be tracked in a separate notes column in the CSV.
 
 **Stage 3 — Failure analysis (after fine-tuning)**
-After Section 4 of the Colab notebook produces the list of wrong predictions, all misclassified examples will be pasted into Claude with the prompt: "Identify any common patterns in these misclassified posts — similar length, sarcasm, a specific label pair that keeps getting confused, or any other pattern you notice." Claude's identified patterns will then be verified manually by re-reading the examples. Any patterns Claude flags that do not hold up on re-reading will be discarded. The verified patterns will be included in the evaluation report's failure analysis section.
+Colab produces the list of wrong predictions, all misclassified examples will be pasted into Claude with the prompt: "Identify any common patterns in these misclassified posts — similar length, sarcasm, a specific label pair that keeps getting confused, or any other pattern you notice." Claude's identified patterns will then be verified manually by re-reading the examples. Any patterns Claude flags that do not hold up on re-reading will be discarded. The verified patterns will be included in the evaluation report's failure analysis section.
 
 ---
 
