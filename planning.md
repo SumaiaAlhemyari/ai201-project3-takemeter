@@ -119,11 +119,6 @@ r/TrueFilm's community Rules allow posts that summarize an outside source. These
 
 **If a label is underrepresented after 200 examples:** If any label falls below 75 posts, additional posts of that type will be collected manually by browsing r/TrueFilm directly and identifying posts that clearly fit the underrepresented label. The goal is to keep all labels above 75 posts (roughly 27% of the dataset) to avoid training on a heavily imbalanced set. A heavily imbalanced dataset produces a model that predicts the majority class most of the time, making per-class metrics meaningless.
 
-**What to skip during collection:**
-- Removed posts (`[removed]`) or deleted posts (`[deleted]`)
-- Stickied mod posts and weekly "Fun & Fancy Free" discussion threads
-- Posts under 200 characters (too short for reliable labeling)
-
 **Post format:** Each example consists of the post title concatenated with the post body, separated by a space. This matches the format produced by the collection scripts and is consistent with how the Colab will tokenize the data.
 
 ---
