@@ -111,15 +111,13 @@ r/TrueFilm's community Rules allow posts that summarize an outside source. These
 
 ## 4. Data Collection Plan
 
-**Source:** r/TrueFilm top posts, collected using a two-step local Python script that uses Reddit's public JSON API (no credentials required). Scripts are run on a local Linux machine with a residential IP address to avoid Reddit's block on cloud IP ranges.
+**Source:** r/TrueFilm top posts, collected and saved in a CSV file unlabled.
 
-**Why local scripts:** Reddit's PRAW library now requires approval for new OAuth tokens. Reddit also blocks Google Colab's IP addresses with a 403 Forbidden response. A local machine with a realistic browser User-Agent header and randomized 3–8 second delays between requests successfully bypasses these restrictions.
+**Collection target:** 300 posts but will use only 200. The goal is 200+ usable labeled examples at least 80 posts per lable.
 
-**Collection target:** 300 posts (buffer for broken links, removed posts, and posts that turn out to be unlabelable). After filtering, the goal is 200+ usable labeled examples.
+**Target distribution:** Approximately 80 posts per label. r/TrueFilm's rules naturally produce more `analysis` and `interpretation` posts than `reaction` posts, so distribution may be slightly uneven.
 
-**Target distribution:** Approximately 67 posts per label. r/TrueFilm's rules naturally produce more `analysis` and `interpretation` posts than `reaction` posts, so distribution may be slightly uneven.
-
-**If a label is underrepresented after 200 examples:** If any label falls below 55 posts, additional posts of that type will be collected manually by browsing r/TrueFilm directly and identifying posts that clearly fit the underrepresented label. The goal is to keep all labels above 55 posts (roughly 27% of the dataset) to avoid training on a heavily imbalanced set. A heavily imbalanced dataset produces a model that predicts the majority class most of the time, making per-class metrics meaningless.
+**If a label is underrepresented after 200 examples:** If any label falls below 75 posts, additional posts of that type will be collected manually by browsing r/TrueFilm directly and identifying posts that clearly fit the underrepresented label. The goal is to keep all labels above 75 posts (roughly 27% of the dataset) to avoid training on a heavily imbalanced set. A heavily imbalanced dataset produces a model that predicts the majority class most of the time, making per-class metrics meaningless.
 
 **What to skip during collection:**
 - Removed posts (`[removed]`) or deleted posts (`[deleted]`)
@@ -183,6 +181,44 @@ Claude (claude.ai) will be used at three specific stages of the project:
 
 **Stage 1 — Label stress-testing (before annotation)**
 Before labeling 200 posts, Claude will be given the three label definitions and edge case rules and asked to generate 6 posts that sit at the boundary between two labels. If Claude produces posts that cannot be cleanly labeled using the current definitions, the definitions will be tightened before annotation begins. This is more efficient than discovering the problem after labeling 50 posts.
+
+Here are all 6 in your requested format:
+
+Post 1: analysis or interpretation
+
+"I've been thinking about the way Kubrick uses symmetrical framing in The Shining. Almost every corridor shot is perfectly centered, doors aligned, geometry exact. But what's interesting is how he breaks this in the final chase sequence — the hedge maze is the one space where the symmetry collapses entirely. The camera loses its composure along with Wendy. I think this is Kubrick's way of showing us that Jack's madness has finally overwhelmed the hotel's order — the building can no longer hold its shape once the violence becomes real."
+
+Explanation: Opens with specific craft evidence (symmetrical framing, broken in the maze) which pulls toward analysis. But the conclusion is a meaning claim — the hotel losing its shape mirrors Jack's madness. The craft is serving the argument about what the film means, not the other way around. → interpretation
+
+Post 2: interpretation or reaction
+
+"Watched Parasite for the second time last night and something clicked that I missed before. The whole film is really about the impossibility of escape — not just economic escape, but physical escape from the spaces you're born into. The Parks live above ground, the Kims live below it, and the only movement between those worlds is temporary and always ends in violence. I felt this more viscerally on rewatch than I did the first time, maybe because I knew what was coming and could watch the architecture do its work." 
+
+Explanation: Has personal framing ("watched last night," "I felt this more viscerally") which pulls toward reaction. But the bulk of the post is a developed spatial argument about what the film means. Remove the personal framing and the argument stands on its own. → interpretation
+
+Post 3: analysis or reaction
+
+"Just finished my third watch of Tár and I keep coming back to how Cate Blanchett controls the physical space in every scene. The way she positions herself relative to other bodies — always slightly off-center, never quite where you expect her — it creates this low-level unease that I couldn't name until this watch. The blocking and her physical choices feel so precise that I kept pausing to rewind. I don't think I've ever noticed blocking this consciously before. She makes you feel the power dynamic before any dialogue confirms it."
+
+Explanation: Makes specific craft observations about blocking and physical positioning which pulls toward analysis. But the entire post is structured as a personal discovery — "I keep coming back to," "I couldn't name until this watch," "I've never noticed this consciously before." Remove the personal framing and the post loses its structure entirely. → reaction
+
+Post 4: analysis, interpretation, or reaction
+
+"This is going to sound reductive but I think the reason Jeanne Dielman works is purely rhythmic. Akerman gives each task exactly the time it takes — no more, no less — and the film's horror builds not from anything that happens but from the rhythm itself being disturbed. When Jeanne overcooks the potatoes in day two you feel it as a physical wrongness before you understand it intellectually. That's a form argument, not a content argument: the film's meaning is inseparable from its duration. I've read essays claiming this is primarily a feminist statement but I think that reading, while valid, is secondary to what the film is actually doing formally."
+
+Explanation: The hardest of the six — touches all three labels. Has a personal felt response ("you feel it as a physical wrongness"), reaches a meaning claim ("the film's meaning is inseparable from its duration"), and makes a craft argument. But the conclusion is about how the film works formally, and the craft observation is both the evidence and the conclusion. → analysis
+
+Post 5: analysis or interpretation
+
+"One thing I don't see discussed enough is how Wong Kar-wai uses expired film stock in Chungking Express. The oversaturated colors and grain aren't just aesthetic choices — they're technically the result of film degrading past its intended use date. Every frame is literally decaying. What's remarkable is how precisely this matches the emotional register of characters who are themselves expiring — waiting out the clock on relationships that are already over. The technique and the subject matter are the same thing. You can't separate how it looks from what it's about."
+
+Explanation: The most deceptive of the six — the craft detail is genuinely technical and specific (expired film stock, oversaturation, grain) which pulls strongly toward analysis. But the final sentences make an explicit meaning claim: technique and subject matter are inseparable. The craft exists to support a claim about what the film is about. → interpretation
+
+Post 6: reaction or interpretation
+
+"I went into The Worst Person in the World expecting a breakup film and came out feeling like I'd watched something about the particular exhaustion of being self-aware in your thirties. Julie isn't unlikeable — she's just someone who can see all her own contradictions clearly and can't do anything about it. That hit me harder than I expected, probably because I recognized it. I don't know if Trier intended this but the film feels less like a character study and less like a generational portrait and more like a document of a specific kind of paralysis — knowing exactly what you want to want and being unable to want it."
+
+Explanation: The final sentence is a strong interpretive claim that pulls toward interpretation. But the entire post is structured around arriving at that insight through personal experience — "hit me harder than I expected," "probably because I recognized it," "I went in expecting." The personal frame is load-bearing, not decorative. One strong interpretive line doesn't override the structure of the whole post. → reaction
 
 **Stage 2 — Annotation assistance (during labeling)**
 For posts that are genuinely ambiguous after applying the decision rules, Claude will be given the label definitions and the specific post and asked which label it would assign and why. The final label decision will always be made by the human annotator — Claude's suggestion is a second opinion, not a final answer. All Claude-assisted labels will be tracked in a separate notes column in the CSV.
